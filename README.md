@@ -12,9 +12,11 @@ Live: https://youness-yachruti.pages.dev
 
 ```
 src/
-├── index.md                    Home page (header, About, Education, Core
+├── index.md                    Home page (hero, About, Education, Core
 │                                expertise, Languages, Featured projects,
 │                                Outside the desk)
+├── style.css                   Custom theme, layered on Framework's "air"
+│                                theme (imports observablehq:theme-air.css)
 ├── quantitative-finance/
 │   └── index.md                Section index — empty card grid for now
 ├── data-analytics/
@@ -23,12 +25,10 @@ src/
 │   └── index.md                Section index — empty card grid for now
 ├── projects/
 │   └── _template.md            Copy this to start a new project page
-└── assets/
-    ├── site.css                 Shared styles (header/banner, cards, badges)
-    └── images/
-        ├── banner.png            Header banner (3168×792, 4:1)
-        └── portrait.jpg          Header portrait (circular-cropped via CSS)
-observablehq.config.js          Site config: sidebar nav, theme, head/footer
+└── assets/images/
+    ├── banner.png               Header banner (3168×792, 4:1)
+    └── portrait.jpg             Header portrait (circular-cropped via CSS)
+observablehq.config.js          Site config: sidebar nav, theme + style, footer
 ```
 
 ## How to run locally
@@ -46,7 +46,10 @@ reload as you edit files in `src/`.
 1. Copy `src/projects/_template.md` into the right section folder and rename
    it to the project's slug, e.g. `src/quantitative-finance/geometry-of-risk.md`.
    Fill in the sections (Overview, Key results, Approach, Stack, Links) —
-   delete the HTML comment block at the top before publishing.
+   delete the HTML comment block at the top before publishing. Keep the
+   `<h1 class="page-title">` on the first heading (not a plain `#`) — the
+   `page-title` class keeps the heading at section-page size instead of the
+   large hero-style name treatment reserved for the home page.
 2. In `observablehq.config.js`, uncomment/add the entry in that section's
    `pages` array, e.g.:
    ```js
@@ -60,15 +63,15 @@ reload as you edit files in `src/`.
    }
    ```
 3. Add a card for it in that section's `index.md` (inside the empty
-   `<div class="cards">...</div>`), and — if it's one of the top projects —
-   add the same card to `src/index.md`'s "Featured projects" grid. Copy the
-   markup of an existing card if one exists, or use:
+   `<div class="card-grid">...</div>`), and — if it's one of the top
+   projects — add the same card to `src/index.md`'s "Featured projects"
+   grid. Cards are a single clickable link, not a div + separate "view"
+   link:
    ```html
-   <div class="card">
+   <a class="card" href="/quantitative-finance/geometry-of-risk">
    <h3>Project Name</h3>
    <p>One-sentence description.</p>
-   <a class="card-link" href="/quantitative-finance/geometry-of-risk">View project →</a>
-   </div>
+   </a>
    ```
 4. Build and redeploy (see below).
 
@@ -89,11 +92,14 @@ shown above, or export it in your shell for the session only.
 ## Notes
 
 - No résumé download, no phone number — contact is email/LinkedIn/GitHub
-  badges only, on the home page header.
+  pills only, in the home page header.
 - The header portrait/banner are the only images on the site by design — no
   photo strip or gallery.
 - The "About me" section on the home page currently has placeholder copy —
   search for the `PLACEHOLDER` comment in `src/index.md` and replace it.
+- The header portrait is CSS-cropped from a rectangular source photo
+  (`object-position: 50% 20%` in `src/style.css`, `.hero-portrait`) — adjust
+  that value if the crop doesn't frame the face well.
 - Every number on this site is sourced from a verified project or résumé —
   see the linked repos for methodology. Nothing here is invented.
 - Custom domain: not yet configured — currently served from the free
