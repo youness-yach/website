@@ -3,12 +3,12 @@ title: Writing / Research
 toc: false
 ---
 
-# Writing / Research
+<h1 class="page-title">Writing / Research</h1>
 
 Published research and writeups — equity research, market commentary, and
 longer-form pieces that don't fit a code repository.
 
-<div class="cards">
+<div class="card-grid">
 </div>
 
-<p class="coming-soon">Writeups are added here as they're published — check back soon.</p>
+<p class="empty-note">Writeups are added here as they're published — check back soon.</p>

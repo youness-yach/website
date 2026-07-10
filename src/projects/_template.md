@@ -17,7 +17,7 @@ toc: true
   5. Delete this comment block before publishing.
 -->
 
-# Project Name
+<h1 class="page-title">Project Name</h1>
 
 One-sentence what-and-why.
 

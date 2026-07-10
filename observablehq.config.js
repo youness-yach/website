@@ -40,10 +40,10 @@ export default {
   // The path to the source root.
   root: "src",
 
-  // Restrained, editorial look. Framework's default theme handles light/dark
-  // automatically based on the visitor's system preference.
-  theme: "default",
-  head: '<link rel="stylesheet" href="/assets/site.css">',
+  // Restrained, editorial look: custom theme layered on top of Framework's
+  // "air" theme — see src/style.css.
+  theme: "air",
+  style: "style.css",
   header: "",
   footer: `© ${new Date().getFullYear()} Youness Yachruti`,
   sidebar: true,
