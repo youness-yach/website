@@ -3,185 +3,89 @@ title: Youness Yachruti
 toc: false
 ---
 
-<style>
+<div class="profile-header">
+  <img class="profile-banner" src="./assets/images/banner.png" alt="Youness Yachruti — Quantitative Finance, Systematic Trading, Risk" width="3168" height="792">
+  <img class="profile-portrait" src="./assets/images/portrait.jpg" alt="Youness Yachruti">
+</div>
 
-.hero h1 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.01em;
-}
-
-.hero p.positioning {
-  font-size: 1.05rem;
-  color: var(--theme-foreground-muted);
-  margin-top: 0;
-  margin-bottom: 2.5rem;
-}
-
-section.block {
-  margin: 3rem 0;
-}
-
-section.block h2 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--theme-foreground-muted);
-  font-weight: 600;
-  border: none;
-  margin-bottom: 1.25rem;
-}
-
-.about p {
-  max-width: 42em;
-  line-height: 1.65;
-}
-
-.expertise-list {
-  max-width: 42em;
-  line-height: 1.7;
-}
-
-.expertise-list li {
-  margin-bottom: 0.6rem;
-}
-
-.stack-line {
-  max-width: 42em;
-  color: var(--theme-foreground-muted);
-  line-height: 1.7;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.card {
-  border: solid 1px var(--theme-foreground-faintest);
-  border-radius: 8px;
-  padding: 1.25rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.card h3 {
-  margin: 0;
-  font-size: 1.05rem;
-}
-
-.card p {
-  margin: 0;
-  color: var(--theme-foreground-muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  flex-grow: 1;
-}
-
-.card a.card-link {
-  font-size: 0.88rem;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-line, .lang-line {
-  color: var(--theme-foreground-muted);
-}
-
-</style>
-
-<div class="hero">
+<div class="profile-identity">
 
 # Youness Yachruti
 
 <p class="positioning">Quantitative Finance · Systematic Trading · Risk</p>
 
+<p class="badge-row">
+<a href="https://www.linkedin.com/in/youness-yachruti/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="mailto:yyachruti@gmail.com"><img src="https://img.shields.io/badge/Email-333333?style=flat&logo=gmail&logoColor=white" alt="Email"></a>
+<a href="https://github.com/youness-yach" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub"></a>
+</p>
+
 </div>
 
-<section class="block about">
+<section class="block">
 
-## About
+## About me
 
-I build systematic trading strategies and the risk machinery around them —
-regime models, position sizing, drawdown control — and before the code, I
-traded live capital with my own money on the line.
-
-I deepened the theory through an MSc in Data Analytics at Hult International
-Business School, and I'm planning to go further through a Master's in
-Financial Engineering at Baruch College.
+<!-- PLACEHOLDER — replace with your final 2–3 sentence copy. -->
+I'm a trader who codes: I build systematic trading strategies and the risk
+machinery around them, with a research focus on regime detection and
+multi-asset systemic risk. I'm currently deepening that into a Pre-MFE at
+Baruch College on top of an MSc in Data Analytics from Hult, aiming at
+quantitative analyst and systematic trading roles.
 
 </section>
 
 <section class="block">
 
-## What I work on
+## Education
 
-<ul class="expertise-list">
-<li><b>Regime detection</b> — Hidden Markov Models for volatility-state classification and dynamic position sizing in Python.</li>
-<li><b>Risk research</b> — <i>"The Geometry of Risk"</i> (working paper): a four-layer framework for multi-asset systemic-stress monitoring — correlation-network topology, Granger causality, tail-risk quantification, and HMM regime detection across 9 global asset classes. An out-of-sample HMM flagged the April 2026 stress regime; results cross-validated against a DCC-GARCH benchmark.</li>
-<li><b>Markets & compliance</b> — supported $10M+ in FX flow at Crédit International; ran UEMOA compliance audits across 15+ risk exposures and built the risk-reporting pipelines behind them.</li>
-<li><b>Data engineering</b> — ETL pipelines with validation and schema normalization; quantified $19.17M in cross-fiscal revenue and $187K in bad-debt exposure for Semester at Sea.</li>
-<li><b>Automation</b> — LLM-powered workflows (Google Apps Script) that cut manual data entry 60% for SME clients.</li>
+<ul>
+<li><b>Baruch College</b> — Pre-MFE (Machine Learning with Financial Engineering)</li>
+<li><b>Hult International Business School</b> — MSc, Data Analytics</li>
+<li><b>ESTA School</b> — B.Sc., Business Engineering</li>
 </ul>
 
 </section>
 
 <section class="block">
 
-## Stack
+## Core expertise
 
-<p class="stack-line">
-Python (pandas, scikit-learn, statsmodels) · SQL · R · QuantConnect · Power BI · Excel<br>
-Hidden Markov Models · PCA / eigen-decomposition · time-series analysis · statistical inference · backtesting · portfolio optimization · drawdown control
-</p>
-
-<p class="stack-line">
-<b>Certifications:</b> FINRA SIE · Bloomberg Market Concepts · Market Microstructure · Mathematics for Machine Learning · Series 66 (in progress)
-</p>
+<ul class="expertise-list">
+<li>Systematic Trading & Strategy Design</li>
+<li>Risk Modeling & Regime Detection</li>
+<li>Quantitative Research</li>
+<li>Data Engineering (SQL/Python)</li>
+<li>Machine Learning</li>
+<li>LLM Automation</li>
+</ul>
 
 </section>
 
 <section class="block">
 
-## Featured work
+## Languages
+
+<p class="muted-line">English · French · Arabic</p>
+
+</section>
+
+<section class="block">
+
+## Featured projects
 
 <div class="cards">
-
-<div class="card">
-<h3>The Geometry of Risk</h3>
-<p>A four-layer empirical framework for multi-asset systemic risk monitoring — network topology, Granger causality, tail-risk quantification, and HMM regime detection. Manuscript under peer review.</p>
-<a class="card-link" href="https://github.com/youness-yach/geometry-of-risk" target="_blank">View on GitHub →</a>
-</div>
-
-<div class="card">
-<h3>Semester at Sea — Revenue Pipeline</h3>
-<p>SQL reconciliation pipeline that untangled a fiscal-year vs. academic-year revenue mismatch, quantifying $19.17M in cross-fiscal revenue and $187K in bad-debt exposure.</p>
-<a class="card-link" href="https://github.com/youness-yach/semester-at-sea-revenue-pipeline" target="_blank">View on GitHub →</a>
-</div>
-
-<div class="card">
-<h3>Visa Inc. (NYSE:V) — Equity Research</h3>
-<p>Multi-stage DCF, comparable-company analysis, FX/rate macro stress testing, and a blockchain/stablecoin disruption thesis.</p>
-<a class="card-link" href="https://seekingalpha.com/article/4788534-visa-stop-swiping-for-now" target="_blank">Read on Seeking Alpha →</a>
-</div>
-
 </div>
 
 </section>
 
-<section class="block">
+<div class="closing-note">
 
-## Contact
+## Outside the desk
 
-<p class="contact-line">
-<a href="mailto:yyachruti@gmail.com">Email</a> ·
-<a href="https://www.linkedin.com/in/youness-yachruti/" target="_blank">LinkedIn</a> ·
-<a href="https://github.com/youness-yach" target="_blank">GitHub</a>
-</p>
+<p>Away from markets, I train in martial arts and gymnastics, play chess and
+poker, and read history and philosophy. Different games, one habit: making
+good decisions under pressure and incomplete information — which is most of
+what trading is, too.</p>
 
-<p class="lang-line">English · Français · العربية</p>
-
-</section>
+</div>

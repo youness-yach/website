@@ -1,0 +1,192 @@
+/* Shared styles — restrained, editorial. One accent color, strong type
+   hierarchy, generous whitespace. Used across the home page and every
+   section index page via observablehq.config.js's `head`. */
+
+:root {
+  --accent: #2a5fb4;
+}
+
+/* ---------- LinkedIn-style header: banner + overlaid circular portrait ---------- */
+
+.profile-header {
+  position: relative;
+  width: 100%;
+  margin: 0 0 4.5rem;
+}
+
+.profile-banner {
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.profile-portrait {
+  position: absolute;
+  left: 2.5rem;
+  bottom: -3.5rem;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 4px solid var(--theme-background, #fff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .profile-portrait {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -2.75rem;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.profile-identity {
+  margin-top: 4.25rem;
+}
+
+@media (max-width: 640px) {
+  .profile-identity {
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+}
+
+.profile-identity h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.2rem;
+}
+
+.profile-identity p.positioning {
+  font-size: 1rem;
+  color: var(--theme-foreground-muted);
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+}
+
+/* ---------- Contact badges ---------- */
+
+.badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .badge-row {
+    justify-content: center;
+  }
+}
+
+.badge-row img {
+  height: 24px;
+  display: block;
+}
+
+/* ---------- Generic section block ---------- */
+
+section.block {
+  margin: 3rem 0;
+}
+
+section.block h2 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--theme-foreground-muted);
+  font-weight: 600;
+  border: none;
+  margin-bottom: 1.1rem;
+}
+
+.block p, .block ul {
+  max-width: 42em;
+  line-height: 1.65;
+}
+
+.expertise-list li {
+  margin-bottom: 0.5rem;
+}
+
+.muted-line {
+  color: var(--theme-foreground-muted);
+}
+
+/* ---------- Project card grid (home + section index pages) ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  border: solid 1px var(--theme-foreground-faintest);
+  border-radius: 8px;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--theme-foreground-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.card a.card-link {
+  font-size: 0.88rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.coming-soon {
+  border: dashed 1px var(--theme-foreground-faintest);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: var(--theme-foreground-faint);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* ---------- Outside the Desk: quiet closing note ---------- */
+
+.closing-note {
+  margin: 3.5rem 0 1.5rem;
+  padding-top: 1.75rem;
+  border-top: solid 1px var(--theme-foreground-faintest);
+}
+
+.closing-note h2 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--theme-foreground-muted);
+  font-weight: 600;
+  border: none;
+  margin-bottom: 0.6rem;
+}
+
+.closing-note p {
+  max-width: 42em;
+  color: var(--theme-foreground-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
