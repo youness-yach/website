@@ -3,11 +3,11 @@ title: Visa (NYSE:V) Valuation
 toc: false
 ---
 
-<span class="stamp">Research · Published</span>
+<div class="stamp">Research · Published</div>
 
 # Visa (NYSE:V) — DCF &amp; comparables
 
-<span class="deck">Equity research · published on Seeking Alpha</span>
+<div class="deck">Equity research · published on Seeking Alpha</div>
 
 A full valuation of Visa, built up from the economics of the payment network itself rather than
 from a growth rate pasted onto last year's cash flow. Discounted cash flow, triangulated against

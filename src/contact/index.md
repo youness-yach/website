@@ -3,11 +3,11 @@ title: Contact
 toc: false
 ---
 
-<span class="stamp">Contact</span>
+<div class="stamp">Contact</div>
 
 # Let's talk markets.
 
-<span class="deck">Open to relocation · MENA · GCC · Europe</span>
+<div class="deck">Open to relocation · MENA · GCC · Europe</div>
 
 Quant research, systematic trading, risk — or just to argue about whether a signal survives
 costs. I answer everything.

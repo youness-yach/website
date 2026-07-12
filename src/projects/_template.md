@@ -15,8 +15,8 @@ toc: false
   4. Delete this comment block before publishing.
 
   Available components (see src/style.css for how each renders):
-    <span class="stamp">Section · Category</span>   — small amber eyebrow label
-    <span class="deck">One-line subtitle</span>       — uppercase mono subhead under the h1
+    <div class="stamp">Section · Category</div>   — small amber eyebrow label
+    <div class="deck">One-line subtitle</div>       — uppercase mono subhead under the h1
     <div class="facts">...</div>                      — stat strip, see geometry-of-risk.md for the pattern
     <div class="note"><b>Label</b>Text</div>           — amber callout box (use for backtest/live disclaimers)
     <div class="stack">Tech · <span>Highlighted</span></div> — tech-stack line, wrap key items in <span>
@@ -25,11 +25,11 @@ toc: false
     <div class="ledger">...</div>                      — timeline rows, see index.md "Background" for the pattern
 -->
 
-<span class="stamp">Section · Category</span>
+<div class="stamp">Section · Category</div>
 
 # Project Name
 
-<span class="deck">One-line subtitle</span>
+<div class="deck">One-line subtitle</div>
 
 2–4 sentences: the problem, the approach, the outcome. Label any metric as
 backtest/live. No invented numbers.

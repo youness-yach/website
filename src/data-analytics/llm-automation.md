@@ -3,11 +3,11 @@ title: LLM Workflow Automation
 toc: false
 ---
 
-<span class="stamp">Analytics · Applied AI</span>
+<div class="stamp">Analytics · Applied AI</div>
 
 # LLM workflow automation
 
-<span class="deck">Phronesis Advisory · 2025</span>
+<div class="deck">Phronesis Advisory · 2025</div>
 
 Built LLM-powered automation for SME client workflows — the unsexy category of AI work where
 the win is measured in **hours of manual data entry that stop happening**, not in

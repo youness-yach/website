@@ -3,11 +3,11 @@ title: FX Ops & Compliance
 toc: false
 ---
 
-<span class="stamp">Analytics · Markets operations</span>
+<div class="stamp">Analytics · Markets operations</div>
 
 # FX operations &amp; regulatory compliance
 
-<span class="deck">Crédit International · 2024</span>
+<div class="deck">Crédit International · 2024</div>
 
 Worked on FX transaction workflows and **UEMOA regulatory compliance** inside West
 African currency markets — a corner of FX with genuinely different mechanics from the majors:

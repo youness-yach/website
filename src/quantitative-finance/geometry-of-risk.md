@@ -3,11 +3,11 @@ title: The Geometry of Risk
 toc: false
 ---
 
-<span class="stamp">Quant · Flagship research</span>
+<div class="stamp">Quant · Flagship research</div>
 
 # The Geometry of Risk
 
-<span class="deck">Reading systemic stress before it prints</span>
+<div class="deck">Reading systemic stress before it prints</div>
 
 Correlation is a comfortable number right up until the moment it isn't. This project builds a
 **four-layer framework** for detecting systemic stress in the structure of a market,

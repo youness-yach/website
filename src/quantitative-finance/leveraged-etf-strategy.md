@@ -3,11 +3,11 @@ title: Leveraged-ETF Regime Strategy
 toc: false
 ---
 
-<span class="stamp">Quant · Systematic strategy</span>
+<div class="stamp">Quant · Systematic strategy</div>
 
 # Leveraged-ETF regime strategy
 
-<span class="deck">Summr Capital Management · in development</span>
+<div class="deck">Summr Capital Management · in development</div>
 
 A systematic strategy that shifts exposure across leveraged ETFs based on a hidden-Markov
 regime signal. The premise: leveraged products are punishing in choppy, mean-reverting regimes

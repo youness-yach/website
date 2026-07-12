@@ -3,11 +3,11 @@ title: Semester at Sea Pipeline
 toc: false
 ---
 
-<span class="stamp">Analytics · Data engineering</span>
+<div class="stamp">Analytics · Data engineering</div>
 
 # Semester at Sea — financial data pipeline
 
-<span class="deck">ETL, SQL modelling, and revenue analysis</span>
+<div class="deck">ETL, SQL modelling, and revenue analysis</div>
 
 An end-to-end pipeline over multi-year institutional revenue data: extraction, **schema
 normalisation, validation**, and a SQL modelling layer that turned an inconsistent

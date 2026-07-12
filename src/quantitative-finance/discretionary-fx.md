@@ -3,11 +3,11 @@ title: Discretionary FX Record
 toc: false
 ---
 
-<span class="stamp">Quant · Live track record</span>
+<div class="stamp">Quant · Live track record</div>
 
 # Discretionary FX — prop desk
 
-<span class="deck">My Forex Fund · 2022–2023</span>
+<div class="deck">My Forex Fund · 2022–2023</div>
 
 Before the models, the screen. Two years of discretionary price-action trading on a proprietary
 FX desk, where the account was real and the drawdown was mine.

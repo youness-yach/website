@@ -3,11 +3,11 @@ title: Notes & Work in Progress
 toc: false
 ---
 
-<span class="stamp">Research · Ongoing</span>
+<div class="stamp">Research · Ongoing</div>
 
 # Notes &amp; work in progress
 
-<span class="deck">What's on the desk right now</span>
+<div class="deck">What's on the desk right now</div>
 
 This folder grows. Current lines of work:
 
