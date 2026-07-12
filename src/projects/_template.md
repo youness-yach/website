@@ -1,27 +1,35 @@
 ---
 title: Project Name
-toc: true
+toc: false
 ---
 
 <!--
   TEMPLATE — copy this file to create a new project page.
 
   1. Copy this file into the right section folder and rename it to the
-     project's slug, e.g. src/quantitative-finance/geometry-of-risk.md
+     project's slug, e.g. src/quantitative-finance/new-project.md
   2. Fill in the sections below. Same accuracy rules as everywhere else:
-     every number labeled, nothing invented.
+     every number labeled backtest/live, nothing invented.
   3. Add the page to the matching section's `pages` array in
      observablehq.config.js so it shows in the sidebar.
-  4. Add/update the project's card on the home page ("Featured projects")
-     and on its section's index page, linking to this page's path.
-  5. Delete this comment block before publishing.
+  4. Delete this comment block before publishing.
+
+  Available components (see src/style.css for how each renders):
+    <span class="stamp">Section · Category</span>   — small amber eyebrow label
+    <span class="deck">One-line subtitle</span>       — uppercase mono subhead under the h1
+    <div class="facts">...</div>                      — stat strip, see geometry-of-risk.md for the pattern
+    <div class="note"><b>Label</b>Text</div>           — amber callout box (use for backtest/live disclaimers)
+    <div class="stack">Tech · <span>Highlighted</span></div> — tech-stack line, wrap key items in <span>
+    <a class="btn solid" href="...">Label</a>          — filled button (primary CTA)
+    <a class="btn" href="...">Label</a>                — outline button (secondary)
+    <div class="ledger">...</div>                      — timeline rows, see index.md "Background" for the pattern
 -->
 
-<h1 class="page-title">Project Name</h1>
+<span class="stamp">Section · Category</span>
 
-One-sentence what-and-why.
+# Project Name
 
-## Overview
+<span class="deck">One-line subtitle</span>
 
 2–4 sentences: the problem, the approach, the outcome. Label any metric as
 backtest/live. No invented numbers.
@@ -30,14 +38,5 @@ backtest/live. No invented numbers.
 
 - Concrete, true finding.
 
-## Approach
-
-Short methodology: data → method → validation. Be honest about limitations.
-
-## Stack
-
-Languages/libraries actually used.
-
-## Links
-
-[View on GitHub](https://github.com/youness-yach/REPO_NAME)
+<div class="stack">Languages/libraries actually used · <span>highlighted one</span></div>
+<a class="btn solid" href="https://github.com/youness-yach/REPO_NAME" target="_blank" rel="noopener">View the repository</a>
