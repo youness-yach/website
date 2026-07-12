@@ -1,10 +1,9 @@
 # Personal website — youness-yachruti.pages.dev
 
 Built with [Observable Framework](https://observablehq.com/framework/).
-Sidebar-plus-content layout, structured around two career tracks and a
-writing section. Home page is fully built; the sections are real, empty
-routes ready for project pages to be dropped in one at a time as repos are
-cleaned up.
+"Trading desk" theme — dark, monospace, terminal-inspired — with a real
+sidebar and one page per project (no client-side tab-switching, every
+project has its own shareable URL).
 
 Live: https://youness-yachruti.pages.dev
 
@@ -12,24 +11,40 @@ Live: https://youness-yachruti.pages.dev
 
 ```
 src/
-├── index.md                    Home page (hero, About, Education, Core
-│                                expertise, Languages, Featured projects,
-│                                Outside the desk)
-├── style.css                   Custom theme, layered on Framework's "air"
-│                                theme (imports observablehq:theme-air.css)
+├── index.md                        Home — Profile / How I Work / Background
+├── style.css                       Full custom theme (no base theme import)
 ├── quantitative-finance/
-│   └── index.md                Section index — empty card grid for now
+│   ├── geometry-of-risk.md
+│   ├── leveraged-etf-strategy.md
+│   └── discretionary-fx.md
 ├── data-analytics/
-│   └── index.md                Section index — empty card grid for now
+│   ├── semester-at-sea.md
+│   ├── llm-automation.md
+│   └── fx-ops-compliance.md
 ├── writing/
-│   └── index.md                Section index — empty card grid for now
-├── projects/
-│   └── _template.md            Copy this to start a new project page
-└── assets/images/
-    ├── banner.png               Header banner (3168×792, 4:1)
-    └── portrait.jpg             Header portrait (circular-cropped via CSS)
-observablehq.config.js          Site config: sidebar nav, theme + style, footer
+│   ├── visa-valuation.md
+│   └── notes-wip.md
+├── contact/
+│   └── index.md
+└── projects/
+    └── _template.md                Copy this to start a new project page
+observablehq.config.js              Sidebar nav (4 groups), theme, header/footer
 ```
+
+## Design system (all defined in `src/style.css`)
+
+Reusable components you can drop into any page's markdown as raw HTML:
+
+| Class | What it's for |
+|---|---|
+| `<span class="stamp">Section · Category</span>` | Small amber eyebrow label above the H1 |
+| `<span class="deck">Subtitle</span>` | Uppercase mono subhead under the H1 |
+| `<div class="facts">...</div>` | Stat strip — see `leveraged-etf-strategy.md` |
+| `<div class="note"><b>Label</b>Text</div>` | Amber callout box — use for backtest/live disclaimers |
+| `<div class="stack">Tech · <span>Key</span></div>` | Tech-stack line, wrap standout items in `<span>` |
+| `<a class="btn solid" href="...">` | Filled button (primary CTA) |
+| `<a class="btn" href="...">` | Outline button (secondary) |
+| `<div class="ledger">...</div>` | Timeline rows — see `index.md` "Background" |
 
 ## How to run locally
 
@@ -44,41 +59,19 @@ reload as you edit files in `src/`.
 ## How to add a project page
 
 1. Copy `src/projects/_template.md` into the right section folder and rename
-   it to the project's slug, e.g. `src/quantitative-finance/geometry-of-risk.md`.
-   Fill in the sections (Overview, Key results, Approach, Stack, Links) —
-   delete the HTML comment block at the top before publishing. Keep the
-   `<h1 class="page-title">` on the first heading (not a plain `#`) — the
-   `page-title` class keeps the heading at section-page size instead of the
-   large hero-style name treatment reserved for the home page.
-2. In `observablehq.config.js`, uncomment/add the entry in that section's
-   `pages` array, e.g.:
+   it to the project's slug, e.g. `src/quantitative-finance/new-project.md`.
+   Fill in the sections — every metric labeled backtest/live, nothing
+   invented — then delete the HTML comment block at the top.
+2. In `observablehq.config.js`, add an entry to that section's `pages`
+   array:
    ```js
-   {
-     name: "Quantitative Finance",
-     open: true,
-     pages: [
-       {name: "Overview", path: "/quantitative-finance/"},
-       {name: "Geometry of Risk", path: "/quantitative-finance/geometry-of-risk"},
-     ]
-   }
+   {name: "New Project", path: "/quantitative-finance/new-project"}
    ```
-3. Add a card for it in that section's `index.md` (inside the empty
-   `<div class="card-grid">...</div>`), and — if it's one of the top
-   projects — add the same card to `src/index.md`'s "Featured projects"
-   grid. Cards are a single clickable link, not a div + separate "view"
-   link:
-   ```html
-   <a class="card" href="/quantitative-finance/geometry-of-risk">
-   <h3>Project Name</h3>
-   <p>One-sentence description.</p>
-   </a>
-   ```
-4. Build and redeploy (see below).
+3. Build and redeploy (see below).
 
 ## How to redeploy
 
-This deploys to Cloudflare Pages manually (no CI yet — deliberate, to keep
-the pipeline simple while the site is still mostly scaffolding).
+Manual deploy to Cloudflare Pages (no CI yet — deliberate, kept simple):
 
 ```bash
 npm run build
@@ -91,17 +84,12 @@ shown above, or export it in your shell for the session only.
 
 ## Notes
 
-- No résumé download, no phone number — contact is email/LinkedIn/GitHub
-  pills only, in the home page header.
-- The header portrait/banner are the only images on the site by design — no
-  photo strip or gallery.
-- The "About me" section on the home page currently has placeholder copy —
-  search for the `PLACEHOLDER` comment in `src/index.md` and replace it.
-- The header portrait is CSS-cropped from a rectangular source photo
-  (`object-position: 50% 20%` in `src/style.css`, `.hero-portrait`) — adjust
-  that value if the crop doesn't frame the face well.
-- Every number on this site is sourced from a verified project or résumé —
-  see the linked repos for methodology. Nothing here is invented.
+- No résumé download, no phone number, no photos anywhere on the site —
+  contact is email/LinkedIn/GitHub only (Contact page).
+- Every number is sourced from a verified project, résumé, or explicit
+  confirmation — see the linked repos for methodology. Nothing invented.
+  The leveraged-ETF strategy page explicitly labels its 0.3 Sharpe as
+  backtest, not live.
 - Custom domain: not yet configured — currently served from the free
   `*.pages.dev` subdomain.
 
