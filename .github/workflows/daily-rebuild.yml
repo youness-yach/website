@@ -1,0 +1,52 @@
+name: Daily rebuild — live risk dashboard
+
+# Refetches market data, refits the risk dashboard's HMM, rebuilds the site,
+# and redeploys. Computation logic lives in the geometry-of-risk repo
+# (source of truth); this workflow just pulls it in at build time.
+
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 22:00 UTC daily — after US market close
+  workflow_dispatch: {}     # allow manual runs from the Actions tab
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Checkout geometry-of-risk (research code, source of truth)
+        uses: actions/checkout@v4
+        with:
+          repository: youness-yach/geometry-of-risk
+          path: geometry-of-risk
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install risk-dashboard dependencies
+        run: pip install -r geometry-of-risk/requirements.txt
+
+      - name: Compute today's risk dashboard data
+        run: |
+          python geometry-of-risk/scripts/compute_risk_dashboard.py \
+            src/quantitative-finance/geometry-of-risk/data/risk-dashboard.json
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install site dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler pages deploy dist --project-name=youness-yachruti --commit-dirty=true

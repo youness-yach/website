@@ -35,7 +35,7 @@ export default {
     {
       name: "Quant",
       pages: [
-        { name: "The Geometry of Risk",        path: "/quantitative-finance/geometry-of-risk" },
+        { name: "The Geometry of Risk",        path: "/quantitative-finance/geometry-of-risk/" },
         { name: "Leveraged-ETF Regime Strategy", path: "/quantitative-finance/leveraged-etf-strategy" },
         { name: "Discretionary FX Record",     path: "/quantitative-finance/discretionary-fx" }
       ]

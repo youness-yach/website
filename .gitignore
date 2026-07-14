@@ -2,3 +2,8 @@
 /dist/
 node_modules/
 yarn-error.log
+
+# Per-project generated data (fetched/computed fresh at build time — see
+# each project's data/ folder and the workflow that populates it)
+src/**/data/*.json
+!src/assets/**

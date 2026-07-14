@@ -16,9 +16,29 @@
   --dim:#7B8783;
   --phos:#3FE38C;     /* phosphor green — selection colour */
   --amber:#F0A83C;    /* caution / backtest colour */
+  --danger:#E5484D;   /* stress / high-risk colour */
   --rail:224px;
   --tabh:38px;
 }
+
+/* ---------------------------------------------------------------- live dashboards */
+.snapshot{margin:22px 0 8px}
+.regime-badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;font-weight:600}
+.regime-Calm{background:rgba(63,227,140,.15);color:var(--phos)}
+.regime-Transitional{background:rgba(240,168,60,.15);color:var(--amber)}
+.regime-Stress{background:rgba(229,72,77,.15);color:var(--danger)}
+.dash-chart{border:1px solid var(--rule);background:var(--folder);margin:22px 0 6px;
+  padding:14px 12px 6px;overflow:hidden}
+.dash-chart h4{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);font-weight:600;margin-bottom:6px}
+.dash-legend{display:flex;gap:14px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:6px 0 18px}
+.dash-legend span.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.explainer{border-left:2px solid var(--rule);padding:2px 0 2px 16px;margin:18px 0;max-width:70ch}
+.explainer h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text);margin-bottom:4px}
+.explainer p{font-size:.9rem;color:var(--dim);margin-bottom:10px}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{height:100%}
