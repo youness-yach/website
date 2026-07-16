@@ -1,19 +1,20 @@
 ---
-title: Profile
+title: Youness Yachruti — Quantitative Finance & Systematic Trading
+head: '<meta name="description" content="Quantitative analyst and systematic trader who reads markets as behavior, not fixed rules. Regime-detection research and risk models in Python. Based in Morocco — open to MENA, GCC & Europe."><script type="module" src="/shell.js"></script>'
 ---
 
 <div class="stamp">File 00 · Profile</div>
 
-# A trader who <span>codes.</span>
+# Trained to read what <span>changes.</span>
 
-<div class="deck">Youness Yachruti — Quantitative Finance &amp; Systematic Trading</div>
+<div class="deck">Youness Yachruti — Quantitative Finance · Systematic Trading · Risk</div>
 
-I traded FX with real money on the line before I ever wrote a backtest. That's the whole reason my models are built around the things that actually kill strategies — **regime shifts, hidden correlation, and costs** — rather than around the things that look good in a chart.
+I trade and research systematic strategies — but I came to markets the long way round, through martial arts, philosophy, and a stubborn habit of asking what's underneath the rule. I traded FX with real money on the line before I ever wrote a backtest, and that order still matters: intuition first, code to check whether the intuition survives.
 
-Today I work at Summr Capital Management as a Sales & Trading Analyst, building systematic strategies and risk models in Python alongside the desk. Everything in these folders is the work behind that: the research, the strategy, the pipelines, the valuations.
+Today I'm a Sales & Trading Analyst at Summr Capital Management, building systematic strategies and risk models in Python alongside the desk. I treat markets the way I treat most things — as behavior, not fixed law — so everything in these folders is really one question asked many ways: what's actually changing, and how do I adapt to it?
 
 <div class="chart" aria-label="A price path segmented into calm and stress regimes by a hidden-Markov detector.">
-  <div class="hd"><span>Regime detection · hidden Markov states</span><span class="live"><i class="dot"></i>state</span></div>
+  <div class="hd"><span>Regime detection · hidden Markov states</span><span class="live"><i class="dot"></i>live</span></div>
   <svg viewBox="0 0 900 150" preserveAspectRatio="none" role="img">
     <rect class="r-calm" x="0" y="0" width="300" height="150"></rect>
     <rect class="r-stress" x="300" y="0" width="210" height="150"></rect>
@@ -27,7 +28,7 @@ Today I work at Summr Capital Management as a Sales & Trading Analyst, building 
 
 <div class="facts">
   <div><dt>Now</dt><dd>Summr Capital</dd></div>
-  <div><dt>Track</dt><dd class="g">4 yrs markets</dd></div>
+  <div><dt>Markets since</dt><dd class="g">2022</dd></div>
   <div><dt>Open to</dt><dd>MENA · GCC · EU</dd></div>
   <div><dt>Languages</dt><dd>EN · FR · AR</dd></div>
 </div>

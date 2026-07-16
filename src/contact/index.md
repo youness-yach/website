@@ -1,5 +1,6 @@
 ---
-title: Contact
+title: Contact — Youness Yachruti
+head: '<meta name="description" content="Get in touch — quant research, systematic trading, and risk roles. Based in Morocco, open to MENA, GCC & Europe."><script type="module" src="/shell.js"></script>'
 toc: false
 ---
 
@@ -8,6 +9,8 @@ toc: false
 # Let's talk markets.
 
 <div class="deck">Open to relocation · MENA · GCC · Europe</div>
+
+Whether it's a role, a collaboration, or a good argument about a signal — I'm easy to reach.
 
 Quant research, systematic trading, risk — or just to argue about whether a signal survives
 costs. I answer everything.
