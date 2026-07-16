@@ -16,7 +16,7 @@ title: Background
 I started reading philosophy at seven and training martial arts at twelve — not as hobbies, but as a way of living. One taught me to sit with a hard question without flinching; the other taught me discipline, and what it costs to be undefended. Long before markets, I was already learning to observe, to adapt, and to stay honest about where I actually stood.
 
 </div>
-<div class="story-image"><span>Photo slot — martial arts / training<br>drop in later · ~1200px · toned to match</span></div>
+<div class="story-image"><img src="./assets/images/martial-arts.jpg" alt="Group photo with training partners outside a kung fu school, everyone in a fighting stance" loading="lazy"></div>
 </div>
 
 ## A different kind of math.
@@ -31,7 +31,7 @@ I was always good at math, but never the memorize-the-formula kind. I loved it t
 Finance found me later, through engineering and business degrees abroad in France — which drew me onward to Dubai, then Boston, to specialize. Somewhere in there, the knowledge of body and mind became a personal practice, and finance became the field where I could finally put the way I think to work.
 
 </div>
-<div class="story-image"><span>Photo slot — Dubai / Boston / study abroad<br>drop in later · ~1200px · toned to match</span></div>
+<div class="story-image"><img src="./assets/images/study-abroad.jpg" alt="A professor explaining a structural-mechanics problem on a classroom whiteboard during my engineering studies" loading="lazy"></div>
 </div>
 
 <div class="story-movement">
@@ -42,7 +42,7 @@ Finance found me later, through engineering and business degrees abroad in Franc
 I've lived and travelled across China, the US, Europe, and North and West Africa. That taught me as much as any classroom — how people differ, how cultures move, how behavior repeats and where it suddenly doesn't. Learning to read people turned out to be good training for learning to read markets.
 
 </div>
-<div class="story-image"><span>Photo slot — travel<br>drop in later · ~1200px · toned to match</span></div>
+<div class="story-image"><img src="./assets/images/travel.jpg" alt="Selfie with friends celebrating during my time abroad" loading="lazy"></div>
 </div>
 
 ## How it all folds into the work.
