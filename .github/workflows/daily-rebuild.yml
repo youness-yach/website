@@ -1,12 +1,16 @@
 name: Daily rebuild — live risk dashboard + leveraged-ETF backtests
 
-# Refetches market data for both live-computed projects, rebuilds the site,
-# and redeploys. Computation logic for each lives in its own private repo
-# (source of truth); this workflow just pulls both in at build time.
-# Observable Framework builds the whole site on every `npm run build`, so
-# both projects' gitignored data files need to exist or the build fails on
-# whichever page is missing its data — hence both are computed here even
-# though the workflow name emphasizes the risk dashboard's daily cadence.
+# Refetches the risk dashboard's market data fresh (genuinely live, refit
+# daily) and re-runs the leveraged-ETF backtests against whatever market
+# data is currently committed in the private leveraged-etf-strategy repo
+# (not re-fetched — that data only changes when refreshed and committed
+# there directly). Rebuilds the site and redeploys either way. Computation
+# logic for each lives in its own private repo (source of truth); this
+# workflow just pulls both in at build time. Observable Framework builds
+# the whole site on every `npm run build`, so both projects' gitignored/
+# generated data files need to exist or the build fails on whichever page
+# is missing its data — hence both are computed here even though the
+# workflow name emphasizes the risk dashboard's daily cadence.
 
 on:
   schedule:
@@ -49,17 +53,12 @@ jobs:
       - name: Install backtest dependencies
         run: pip install -r leveraged-etf-strategy/requirements.txt
 
-      - name: Fetch market data for leveraged-ETF backtests
-        working-directory: leveraged-etf-strategy
-        run: python scripts/fetch_data.py --start 2018-01-01
-
       - name: Run all four leveraged-ETF backtests
         working-directory: leveraged-etf-strategy
         run: |
           for cfg in riskbalance conservative alpha1 alpha2; do
             python scripts/run_backtest.py \
               --config "$cfg" \
-              --start 2021-01-01 \
               --out "../src/quantitative-finance/leveraged-etf-strategy/data/$cfg.json"
           done
 

@@ -2,12 +2,13 @@
 //
 // Clicking the button POSTs to /api/run-backtest (a Cloudflare Pages
 // Function that holds the GitHub dispatch token server-side and triggers
-// the run-backtest.yml workflow). That workflow re-fetches market data,
-// re-runs the strategy through today, and redeploys the site as a brand
-// new static build — which means the freshly-computed JSON gets a new
-// content-hashed URL. The page you're looking at can't hot-swap that data,
-// so once the workflow finishes we just reload the page, and Observable's
-// build picks up the new file automatically.
+// the run-backtest.yml workflow). That workflow re-runs the strategy
+// against the market data already committed in the private repo and
+// redeploys the site as a brand new static build — which means the
+// freshly-computed JSON gets a new content-hashed URL. The page you're
+// looking at can't hot-swap that data, so once the workflow finishes we
+// just reload the page, and Observable's build picks up the new file
+// automatically.
 //
 // One run per visitor per config, tracked via localStorage — soft and
 // resettable by design, since this is a low-traffic personal site, not a
@@ -29,7 +30,7 @@ export function runBacktestWidget(config, label) {
 
   const info = document.createElement("div");
   info.className = "run-info";
-  info.innerHTML = `<b>Run ${label} fresh</b> — re-fetches market data through today and re-runs this exact backtest. Takes about a minute.`;
+  info.innerHTML = `<b>Run ${label} fresh</b> — re-runs this exact backtest against the current data. Takes about a minute.`;
 
   const action = document.createElement("div");
   action.className = "run-action";
