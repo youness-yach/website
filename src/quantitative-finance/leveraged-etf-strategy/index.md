@@ -24,12 +24,14 @@ Every configuration below shares the same regime detector, the same weekly-Frida
 same performance methodology — the only thing that differs is each config's own risk-sizing and
 gating logic, so the numbers are directly comparable rather than four separate stories.
 
-<div class="facts">
-  <div><dt>Backtest window</dt><dd>2021 – today</dd></div>
+```js
+display(html`<div class="facts">
+  <div><dt>Backtest window</dt><dd>${alpha2.period.start} → ${alpha2.period.end}</dd></div>
   <div><dt>Rebalance</dt><dd>Weekly, Friday close</dd></div>
   <div><dt>Universe</dt><dd>Leveraged &amp; sector ETFs</dd></div>
   <div><dt>Best Sharpe</dt><dd class="g">Alpha 2</dd></div>
-</div>
+</div>`)
+```
 
 <div class="note">
 <b>Backtest, not live</b>
@@ -40,8 +42,7 @@ show computed performance only.
 
 ## Backtests
 
-Pick one to see how it's built and its full result — including a button to re-run it fresh, right now,
-against today's data.
+Pick one to see how it's built and its full result — including a button to re-run it fresh, right now.
 
 ```js
 const cards = [
@@ -118,9 +119,9 @@ were two parallel experiments testing different questions, and Alpha 1 is the re
 from both of them.
 
 - **RiskBalance** — the widest tradable universe, no structural pre-filter on any position. The
-  question it answers: does casting a wide net generate better risk-adjusted return than a narrow one?
-  Under a single global risk budget, mostly not — but it holds up better than a narrower, more gated
-  book once everything is compared on the same footing.
+  question it answers: does casting a wide net generate better risk-adjusted return than a narrower,
+  more defensive one? Here, yes — RiskBalance edges out Conservative on both CAGR and Sharpe despite
+  having neither the rate hedge nor the sticky regime read.
 - **Conservative** — RiskBalance's universe plus a leveraged rate hedge, and a deliberately stickier
   regime read (slower to change its mind about which state the market is in). Trades some
   responsiveness for a smoother ride.
