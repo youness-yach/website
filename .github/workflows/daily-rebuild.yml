@@ -1,8 +1,12 @@
-name: Daily rebuild — live risk dashboard
+name: Daily rebuild — live risk dashboard + leveraged-ETF backtests
 
-# Refetches market data, refits the risk dashboard's HMM, rebuilds the site,
-# and redeploys. Computation logic lives in the geometry-of-risk repo
-# (source of truth); this workflow just pulls it in at build time.
+# Refetches market data for both live-computed projects, rebuilds the site,
+# and redeploys. Computation logic for each lives in its own private repo
+# (source of truth); this workflow just pulls both in at build time.
+# Observable Framework builds the whole site on every `npm run build`, so
+# both projects' gitignored data files need to exist or the build fails on
+# whichever page is missing its data — hence both are computed here even
+# though the workflow name emphasizes the risk dashboard's daily cadence.
 
 on:
   schedule:
@@ -22,6 +26,13 @@ jobs:
           repository: youness-yach/geometry-of-risk
           path: geometry-of-risk
 
+      - name: Checkout leveraged-etf-strategy (private, source of truth)
+        uses: actions/checkout@v4
+        with:
+          repository: youness-yach/leveraged-etf-strategy
+          token: ${{ secrets.BACKTEST_REPO_TOKEN }}
+          path: leveraged-etf-strategy
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -34,6 +45,23 @@ jobs:
         run: |
           python geometry-of-risk/scripts/compute_risk_dashboard.py \
             src/quantitative-finance/geometry-of-risk/data/risk-dashboard.json
+
+      - name: Install backtest dependencies
+        run: pip install -r leveraged-etf-strategy/requirements.txt
+
+      - name: Fetch market data for leveraged-ETF backtests
+        working-directory: leveraged-etf-strategy
+        run: python scripts/fetch_data.py --start 2018-01-01
+
+      - name: Run all four leveraged-ETF backtests
+        working-directory: leveraged-etf-strategy
+        run: |
+          for cfg in riskbalance conservative alpha1 alpha2; do
+            python scripts/run_backtest.py \
+              --config "$cfg" \
+              --start 2021-01-01 \
+              --out "../src/quantitative-finance/leveraged-etf-strategy/data/$cfg.json"
+          done
 
       - name: Set up Node
         uses: actions/setup-node@v4

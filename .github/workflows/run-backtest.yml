@@ -3,11 +3,18 @@ name: Run leveraged-ETF backtest on demand
 # Triggered by a visitor clicking "Run this backtest" on the site (via a
 # Cloudflare Pages Function, which holds the dispatch token — never exposed
 # to the browser) or manually from the Actions tab. Re-fetches market data
-# through today, re-runs the requested config, rebuilds, and redeploys.
-# Computation logic lives in the private leveraged-etf-strategy repo (source
-# of truth); this workflow just pulls it in at build time. Only the computed
-# metrics.json ends up in this repo — the strategy code and market data stay
-# in the private repo.
+# through today and rebuilds, and redeploys. Computation logic lives in the
+# private leveraged-etf-strategy repo (source of truth); this workflow just
+# pulls it in at build time. Only the computed metrics.json files end up in
+# this repo — the strategy code and market data stay in the private repo.
+#
+# Re-runs all four configs every time, not just the one clicked: the
+# comparison page loads all four JSON files, none of them are committed to
+# this repo (gitignored, same pattern as the risk dashboard), and each CI
+# run starts from a fresh checkout — so a partial refresh would make the
+# other three "disappear" from a from-scratch build. Running all four also
+# keeps the whole comparison internally consistent, computed from the same
+# data pull rather than whatever day each config last happened to be run.
 
 on:
   workflow_dispatch:
@@ -36,6 +43,16 @@ jobs:
           token: ${{ secrets.BACKTEST_REPO_TOKEN }}
           path: leveraged-etf-strategy
 
+      # Observable Framework builds the whole site on every `npm run build`,
+      # not just the page that changed — so the Geometry of Risk dashboard's
+      # gitignored data file has to exist too, or the build fails on an
+      # unrelated page. Same checkout + compute step as daily-rebuild.yml.
+      - name: Checkout geometry-of-risk (research code, source of truth)
+        uses: actions/checkout@v4
+        with:
+          repository: youness-yach/geometry-of-risk
+          path: geometry-of-risk
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -44,17 +61,28 @@ jobs:
       - name: Install backtest dependencies
         run: pip install -r leveraged-etf-strategy/requirements.txt
 
+      - name: Install risk-dashboard dependencies
+        run: pip install -r geometry-of-risk/requirements.txt
+
+      - name: Compute today's risk dashboard data
+        run: |
+          python geometry-of-risk/scripts/compute_risk_dashboard.py \
+            src/quantitative-finance/geometry-of-risk/data/risk-dashboard.json
+
       - name: Fetch market data
         working-directory: leveraged-etf-strategy
         run: python scripts/fetch_data.py --start 2018-01-01
 
-      - name: Run backtest
+      - name: Run all four backtests
         working-directory: leveraged-etf-strategy
         run: |
-          python scripts/run_backtest.py \
-            --config ${{ github.event.inputs.config }} \
-            --start 2021-01-01 \
-            --out ../src/quantitative-finance/leveraged-etf-strategy/data/${{ github.event.inputs.config }}.json
+          echo "Triggered from: ${{ github.event.inputs.config }}"
+          for cfg in riskbalance conservative alpha1 alpha2; do
+            python scripts/run_backtest.py \
+              --config "$cfg" \
+              --start 2021-01-01 \
+              --out "../src/quantitative-finance/leveraged-etf-strategy/data/$cfg.json"
+          done
 
       - name: Set up Node
         uses: actions/setup-node@v4
