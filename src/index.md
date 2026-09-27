@@ -9,8 +9,7 @@ title: Youness Yachruti · Quantitative research and data science
 <p class="lead">Quantitative researcher and data scientist. I build systematic trading and risk models in Python, and I publish the research behind them.</p>
 <p class="meta">Sales &amp; Trading Analyst at Summr Capital Management · Casablanca, Morocco, open to relocation</p>
 <div class="btns">
-<a class="btn primary" href="mailto:yyachruti@gmail.com">Email me</a>
-<a class="btn" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
+<a class="btn primary" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
 <a class="btn" href="https://github.com/youness-yach">GitHub</a>
 </div>
 </div>

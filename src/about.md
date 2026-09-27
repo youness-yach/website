@@ -9,8 +9,7 @@ title: About
 <p class="lead" style="margin-top:18px">I came to quantitative finance through trading. I traded FX on a funded account before I wrote my first backtest, and that order shaped how I work: form a view, then test whether it survives the data.</p>
 <p style="margin-top:16px;max-width:62ch">Today I design and test systematic strategies at Summr Capital Management and publish independent research on systemic risk. I'm based in Casablanca and open to relocation. I work in English and French.</p>
 <div class="btns" style="margin-top:8px">
-<a class="btn primary" href="mailto:yyachruti@gmail.com">Email me</a>
-<a class="btn" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
+<a class="btn primary" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
 <a class="btn" href="https://github.com/youness-yach">GitHub</a>
 </div>
 </div>
