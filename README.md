@@ -10,7 +10,8 @@ it applied and one verified result.
 
 | URL | Source | What it shows |
 |---|---|---|
-| `/` | `src/index.md` | Tearsheet, 6 project cards, skills-by-project matrix, research |
+| `/` | `src/index.md` | Tearsheet, 6 selected project cards, skills-by-project matrix, research |
+| `/work` | `src/work.md` | All projects grouped by topic |
 | `/quantitative-finance/geometry-of-risk/` | `src/quantitative-finance/geometry-of-risk/index.md` | Research project, SSRN paper, live risk dashboard |
 | `/projects/urban-heat-islands` | `src/projects/urban-heat-islands.md` | Geospatial machine learning |
 | `/projects/labor-analytics` | `src/projects/labor-analytics.md` | Power BI suite and measure audit |
@@ -19,6 +20,11 @@ it applied and one verified result.
 | `/projects/summr-strategy` | `src/projects/summr-strategy.md` | Summary of professional work (hypothetical results, no proprietary detail) |
 | `/research` | `src/research.md` | Paper and published writing |
 | `/about` | `src/about.md` | Experience, education, leadership |
+
+The header's **Work** menu and the `/work` page both read one list,
+`src/projects.js`. To add a project, create its page, add an entry there and
+add it to `pages` in `observablehq.config.js`. The home page's selected cards
+are edited separately in `src/index.md`, so they stay fixed as the list grows.
 
 Every number on the site comes from the linked repository, the SSRN paper or a
 published note.

@@ -1,8 +1,8 @@
 // observablehq.config.js · Youness Yachruti · portfolio
 //
 // theme: [] disables Observable's default stylesheet, so src/style.css owns the
-// whole design. The site header is plain HTML below; src/nav.js marks the
-// current page in it. There is no sidebar and no Observable table of contents:
+// whole design. The site header is plain HTML below; src/nav.js builds the
+// Work menu from src/projects.js and marks the current page. There is no sidebar and no Observable table of contents:
 // project pages carry their own "On this page" list.
 
 export default {
@@ -21,7 +21,10 @@ export default {
   header: `<div class="site-nav">
   <a class="brand" href="/">Youness Yachruti</a>
   <nav aria-label="Main">
-    <a href="/#work">Work</a>
+    <div class="work-nav">
+      <button type="button" class="work-toggle" aria-expanded="false" aria-controls="work-menu">Work<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div id="work-menu" class="work-menu" hidden></div>
+    </div>
     <a href="/research" class="hide-xs">Research</a>
     <a href="/about" class="hide-sm">About</a>
     <a href="mailto:yyachruti@gmail.com" class="btn-nav">Contact</a>
@@ -49,6 +52,7 @@ export default {
 
   pages: [
     {name: "Home", path: "/"},
+    {name: "All projects", path: "/work"},
     {name: "The Geometry of Risk", path: "/quantitative-finance/geometry-of-risk/"},
     {name: "Urban heat islands", path: "/projects/urban-heat-islands"},
     {name: "Marriott labour analytics", path: "/projects/labor-analytics"},

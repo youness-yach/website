@@ -3,7 +3,7 @@ title: Urban heat islands from satellite data
 ---
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Hult Business Challenge II · Team 4 · 2026 · I led the modelling</p>
 <h1>Urban heat islands from satellite data</h1>
 <p class="lead">Classifying urban heat-island intensity (Low, Medium, High) at 100 m resolution from Sentinel-2, Landsat-8 and elevation data. The models learn on Rio de Janeiro and Santiago, then transfer to Freetown, Sierra Leone, a city with no labels of its own.</p>

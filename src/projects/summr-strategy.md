@@ -3,7 +3,7 @@ title: Regime-conditional leveraged-ETF strategy
 ---
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Professional work · Summr Capital Management · 2026</p>
 <h1>Regime-conditional leveraged-ETF strategy</h1>
 <p class="lead">Leveraged ETFs compound gains in calm trends and bleed value in choppy markets. This rules-based, weekly strategy holds leveraged exposure only when its regime read favours it, and rotates to commodities or short-term Treasuries otherwise.</p>

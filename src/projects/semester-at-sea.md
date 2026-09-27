@@ -3,7 +3,7 @@ title: Semester at Sea revenue in SQL
 ---
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Hult MSc Business Analytics · Team coursework · SQL · 2025</p>
 <h1>Semester at Sea revenue in SQL</h1>
 <p class="lead">A relational model and MySQL analysis for a study-abroad voyage programme whose books run on a fiscal year (July to June) while its service runs on an academic year (August to August). The mismatch hid how much each voyage really earned, and where money leaked through cancellations.</p>

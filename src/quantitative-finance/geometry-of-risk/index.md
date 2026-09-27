@@ -7,7 +7,7 @@ const dash = FileAttachment("./data/risk-dashboard.json").json();
 ```
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Independent research · 2025 to 2026 · Sole author</p>
 <h1>The Geometry of Risk</h1>
 <p class="lead">A four-layer monitoring framework that reads systemic stress in the structure of nine global asset classes: how tightly they move together, who leads whom, how fat the tails are, and which regime the market is in.</p>
@@ -192,7 +192,7 @@ jupyter nbconvert --to notebook --execute notebooks/geometry_of_risk.ipynb
 
 The repo runs on the frozen study window, so every run gives the same result. A few secondary figures differ slightly from the paper, which used a live download in May 2026; the repo documents each difference.
 
-<div class="pager"><a href="/#work">← All projects</a><a href="/projects/urban-heat-islands">Next: Urban heat islands →</a></div>
+<div class="pager"><a href="/work">← All projects</a><a href="/projects/urban-heat-islands">Next: Urban heat islands →</a></div>
 
 </div>
 </div>

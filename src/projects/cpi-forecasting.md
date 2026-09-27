@@ -3,7 +3,7 @@ title: CPI inflation forecasting
 ---
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Baruch College Pre-MFE · Machine Learning · 2026</p>
 <h1>CPI inflation forecasting</h1>
 <p class="lead">Can macro data predict next month's US inflation? OLS, Ridge and Lasso trained on 28 engineered FRED features from 2008 to 2022, tested on 2023 to 2025. The most useful result is what happened when one flaw was fixed.</p>

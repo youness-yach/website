@@ -3,7 +3,7 @@ title: Marriott labour analytics and audit
 ---
 
 <header class="proj-head">
-<a class="back" href="/#work">← All projects</a>
+<a class="back" href="/work">← All projects</a>
 <p class="eyebrow">Hult MSc Business Analytics coursework · Business intelligence · 2026</p>
 <h1>Marriott labour analytics and audit</h1>
 <p class="lead">A Power BI suite that joins timekeeping with scheduling to track labour spend, overtime, attendance and compliance for about 225 hourly employees at a Marriott-managed property. A follow-up audit re-implements every measure in Python and corrects the ones that were wrong.</p>
