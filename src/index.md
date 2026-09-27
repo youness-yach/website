@@ -6,8 +6,8 @@ title: Youness Yachruti · Quantitative research and data science
 <div class="hero-text">
 <p class="eyebrow">Quantitative research · Data science · Trading</p>
 <h1>Youness Yachruti</h1>
-<p class="lead">Quantitative researcher and data scientist. I build systematic trading and risk models in Python, and I publish the research behind them.</p>
-<p class="meta">Sales &amp; Trading Analyst at Summr Capital Management · Casablanca, Morocco, open to relocation</p>
+<p class="lead">Quantitative researcher and data scientist. I build systematic trading and risk models in Python, I'm developing my C++ for quantitative work, and I publish the research behind them.</p>
+<p class="meta">Casablanca, Morocco · open to relocation</p>
 <div class="btns">
 <a class="btn primary" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
 <a class="btn" href="https://github.com/youness-yach">GitHub</a>
@@ -26,7 +26,6 @@ title: Youness Yachruti · Quantitative research and data science
 </div>
 <div>
 <p class="eyebrow">Experience</p>
-<div class="item"><b>Sales &amp; Trading Analyst</b>Summr Capital Management · 2026 to present</div>
 <div class="item"><b>Co-founder</b>Quant Finance Collective · 2025 to 2026</div>
 <div class="item"><b>Automation &amp; AI Consultant</b>Phronesis Advisory · 2025</div>
 <div class="item"><b>Funded prop FX trader</b>My Forex Fund · 2022 to 2023</div>
@@ -42,7 +41,8 @@ title: Youness Yachruti · Quantitative research and data science
 <p class="eyebrow">Credentials</p>
 <div class="item"><b>Working paper, SSRN</b>The Geometry of Risk · 2026</div>
 <div class="item"><b>Published equity research</b>Visa, on Seeking Alpha</div>
-<div class="item"><b>FINRA SIE</b>Series 66 and C++ for Financial Engineering in progress</div>
+<div class="item"><b>FINRA SIE</b>Securities Industry Essentials</div>
+<div class="item"><b>C++ for Financial Engineering</b>QuantNet · in progress</div>
 <div class="item"><b>Languages</b>English, French</div>
 </div>
 </section>
