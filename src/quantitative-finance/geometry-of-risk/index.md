@@ -1,68 +1,110 @@
 ---
 title: The Geometry of Risk
-toc: false
 ---
 
 ```js
 const dash = FileAttachment("./data/risk-dashboard.json").json();
 ```
 
-<div class="stamp">Quant · Flagship research</div>
+<header class="proj-head">
+<a class="back" href="/#work">← All projects</a>
+<p class="eyebrow">Independent research · 2025 to 2026 · Sole author</p>
+<h1>The Geometry of Risk</h1>
+<p class="lead">A four-layer monitoring framework that reads systemic stress in the structure of nine global asset classes: how tightly they move together, who leads whom, how fat the tails are, and which regime the market is in.</p>
+<div class="skills">
+<span class="k">Methods</span><span class="chips"><span class="chip m">PCA / Absorption Ratio</span><span class="chip m">Correlation networks (MST)</span><span class="chip m">Granger causality + Bonferroni</span><span class="chip m">VAR / variance decomposition</span><span class="chip m">CVaR, tail dependence</span><span class="chip m">DCC-GARCH</span><span class="chip m">Gaussian HMM, out-of-sample</span></span>
+<span class="k">Tools</span><span class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">statsmodels</span><span class="chip">scikit-learn</span><span class="chip">hmmlearn</span><span class="chip">arch</span><span class="chip">networkx</span></span>
+<span class="k">Domain</span><span class="v">Systemic risk monitoring · multi-asset portfolios · financial econometrics</span>
+</div>
+<div class="tiles">
+<div class="tile"><div class="n">4 of 4</div><div class="l">crisis windows breach the 0.50 Absorption Ratio threshold</div></div>
+<div class="tile"><div class="n">4 of 72</div><div class="l">directional Granger links survive Bonferroni correction, all into Japan Equity</div></div>
+<div class="tile"><div class="n">Apr 2026</div><div class="l">stress flagged by an HMM trained on 2011 to March 2025 and never refitted</div></div>
+</div>
+<div class="btns">
+<a class="btn primary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7521018">Read the paper (SSRN)</a>
+<a class="btn" href="https://github.com/youness-yach/geometry-of-risk">Code and data</a>
+<a class="btn mono" href="https://doi.org/10.2139/ssrn.7521018">DOI 10.2139/ssrn.7521018</a>
+</div>
+</header>
 
-# The Geometry of Risk
+<div class="proj-body">
+<nav class="toc" aria-label="On this page">
+<p class="eyebrow">On this page</p>
+<a href="#the-problem">The problem</a>
+<a href="#data">Data</a>
+<a href="#approach">Approach</a>
+<a href="#results">Results</a>
+<a href="#live-dashboard">Live dashboard</a>
+<a href="#limitations">Limitations</a>
+<a href="#reproduce-it">Reproduce it</a>
+</nav>
+<div class="article">
 
-<div class="deck">Reading systemic stress before it prints</div>
+## The problem
 
-Correlation is a comfortable number right up until the moment it isn't. This project builds a
-**four-layer framework** for detecting systemic stress in the structure of a market,
-rather than in its returns.
+Diversification fails exactly when it's needed. In a crisis, assets that usually move independently start moving as one block, and a single correlation number hides it. I wanted a monitor that reads the structure of the market directly, and that a risk team could reproduce.
 
-## The four layers
+## Data
 
-- **Network topology** — represent the market as a graph and watch it tighten. Stress shows up as the network collapsing toward a single cluster.
-- **Granger causality** — trace who moves whom. In calm markets the causal graph is sparse; under stress it densifies and reverses direction.
-- **Tail-risk quantification** — measure the fat end directly instead of trusting a variance number to describe it.
-- **Hidden-Markov regime detection** — infer the unobserved state the market is actually in, and date the transitions.
+<table>
+<tr><th>Universe</th><td>9 asset classes: US, EU, Japan, China and emerging-market equity; gold; oil; the US dollar index; the US 10-year yield</td></tr>
+<tr><th>Study window</th><td class="num">24 Apr 2025 to 24 Apr 2026 · N = 261 trading days</td></tr>
+<tr><th>Long history</th><td class="num">2011 to 2026 · N = 3,472 trading days</td></tr>
+<tr><th>Sources</th><td>Yahoo Finance prices; FRED CPI and 10-year yield; a frozen snapshot is committed to the repo</td></tr>
+</table>
 
-Each layer is a weak signal on its own. Stacked, they identify the moments when a portfolio's
-diversification is quietly evaporating — which is precisely when the risk report still looks fine.
+## Approach
 
-<div class="stack">Python · <span>network topology</span> · Granger causality · tail risk · HMM</div>
-<a class="btn solid" href="https://github.com/youness-yach/geometry-of-risk" target="_blank" rel="noopener">View the repository</a>
+1. **Network topology.** Turn correlations into distances, then map the market with a minimum spanning tree, multidimensional scaling and Ward clustering.
+2. **Causality.** Test all 72 directed pairs for Granger causality, keep only what survives Bonferroni correction, and cross-check with joint F-tests and variance decomposition in a nine-asset VAR.
+3. **Tail risk.** Measure CVaR and lower-tail dependence directly instead of trusting variance.
+4. **Regimes.** Track the Absorption Ratio against the 0.50 threshold of Kritzman et al. (2011), and classify regimes with a Gaussian HMM trained on 2011 to March 2025, then applied to the next year without refitting.
 
-## Live risk dashboard
+## Results
 
-Below is a running instance of the framework's core layer — updated daily on real market
-data, not a static snapshot. It's built to demonstrate the tool working, not to reproduce
-the peer-reviewed manuscript results (see the note under "How to read this" for the
-distinction).
+<figure>
+<img src="../../assets/fig/gor/6_absorption_ratio_multi_crisis.png" alt="Absorption Ratio in four stress episodes, each crossing the 0.50 threshold" loading="lazy">
+<figcaption><b>Figure 1.</b> The Absorption Ratio crosses 0.50 in all four episodes: GFC peak 0.537, COVID 0.601, Fed tightening 0.529, the 2025–26 study window 0.507. <a href="https://github.com/youness-yach/geometry-of-risk/tree/main/figures">Source</a></figcaption>
+</figure>
+
+The current-study breach is brief and marginal, 3 days at the very end of the window. That's why the other three layers matter.
+
+<figure>
+<img src="../../assets/fig/gor/3_granger_bonferroni.png" alt="Granger causality matrix before and after Bonferroni correction" loading="lazy">
+<figcaption><b>Figure 2.</b> Of 72 directed pairs, 4 survive the Bonferroni threshold (α* = 0.0007): US, EU, China and emerging-market equity each lead Japanese equity. <a href="https://github.com/youness-yach/geometry-of-risk/tree/main/figures">Source</a></figcaption>
+</figure>
+
+<figure>
+<img src="../../assets/fig/gor/7_hmm_out_of_sample.png" alt="Out-of-sample HMM regime probabilities over the study year" loading="lazy">
+<figcaption><b>Figure 3.</b> Out of sample, the HMM labels 4.1% of the year as stress (its training base rate was 25.6%), in two episodes: the April 2025 tariff shock and the April 2026 peak. <a href="https://github.com/youness-yach/geometry-of-risk/tree/main/figures">Source</a></figcaption>
+</figure>
+
+Two more findings: the correlation-network tree and a parametric DCC-GARCH tree share 5 of 8 links, and oil is quasi-exogenous in the conditional mean (joint F-test p = 0.38 and 0.33) while still explaining 11–16% of the 10-day forecast-error variance of EU equity, emerging markets and the 10-year yield.
+
+## Live dashboard
+
+The framework's core layer, refitted on current market data. It shows the tool running; the paper's results come from the fixed, out-of-sample-validated model in the repo.
 
 ```js
 const current = dash.current;
-const arClass = current.absorption_ratio >= 0.5 ? "a" : "g";
-const regimeClass = `regime-${current.regime}`;
-
-display(html`<div class="snapshot facts">
-  <div><dt>Absorption Ratio</dt><dd class="${arClass}">${current.absorption_ratio.toFixed(3)}</dd></div>
-  <div><dt>Accelerator (z-score)</dt><dd>${current.accelerator_zscore === null ? "—" : current.accelerator_zscore.toFixed(2)}</dd></div>
-  <div><dt>Regime</dt><dd><span class="regime-badge ${regimeClass}">${current.regime}</span></dd></div>
+display(html`<div class="snapshot">
+  <div><dt>Absorption Ratio</dt><dd>${current.absorption_ratio.toFixed(3)}</dd></div>
+  <div><dt>Accelerator (z)</dt><dd>${current.accelerator_zscore === null ? "—" : current.accelerator_zscore.toFixed(2)}</dd></div>
+  <div><dt>Regime</dt><dd><span class="regime-badge regime-${current.regime}">${current.regime}</span></dd></div>
   <div><dt>As of</dt><dd>${current.as_of}</dd></div>
 </div>`);
 ```
 
 ```js
 const parseDate = d3.utcParse("%Y-%m-%d");
-
-const arSeries = dash.absorption_ratio
-  .filter((d) => d.value !== null)
-  .map((d) => ({date: parseDate(d.date), value: d.value}));
-
+const arSeries = dash.absorption_ratio.filter((d) => d.value !== null).map((d) => ({date: parseDate(d.date), value: d.value}));
 const regimeByDate = new Map(dash.regime.map((d) => [d.date, d.state]));
-const regimeColor = {Calm: "#3FE38C", Transitional: "#F0A83C", Stress: "#E5484D"};
-
+const regimeColor = {Calm: "#2E7D4F", Transitional: "#C98A2B", Stress: "#B23A3A"};
 const regimeBands = dash.absorption_ratio
   .filter((d) => d.value !== null && regimeByDate.has(d.date))
   .map((d) => ({date: parseDate(d.date), state: regimeByDate.get(d.date)}));
+const axisStyle = {background: "transparent", color: "#5C5A55", fontFamily: "IBM Plex Mono, monospace", fontSize: "11px"};
 ```
 
 <div class="dash-chart">
@@ -70,122 +112,87 @@ const regimeBands = dash.absorption_ratio
 
 ```js
 Plot.plot({
-  width: 900,
-  height: 260,
-  marginLeft: 40,
-  style: {background: "transparent", color: "#7B8783", fontFamily: "IBM Plex Mono, monospace", fontSize: "10px"},
+  width: 740, height: 250, marginLeft: 40, style: axisStyle,
   x: {type: "utc", label: null},
   y: {domain: [0, 1], label: "Absorption Ratio", grid: true},
   marks: [
-    Plot.rectY(regimeBands, {x: "date", interval: "day", y2: 1, y1: 0, fill: (d) => regimeColor[d.state], fillOpacity: 0.45}),
-    Plot.ruleY([0.5], {stroke: "#39423F", strokeDasharray: "3,3"}),
-    Plot.lineY(arSeries, {x: "date", y: "value", stroke: "#3FE38C", strokeWidth: 1.4}),
-  ],
+    Plot.rectY(regimeBands, {x: "date", interval: "day", y1: 0, y2: 1, fill: (d) => regimeColor[d.state], fillOpacity: 0.12}),
+    Plot.ruleY([0.5], {stroke: "#1A1A1A", strokeDasharray: "4,3"}),
+    Plot.lineY(arSeries, {x: "date", y: "value", stroke: "#1F4E79", strokeWidth: 1.6})
+  ]
 })
 ```
 
 </div>
-<div class="dash-legend">
-  <span><span class="sw" style="background:#3FE38C33"></span>Calm</span>
-  <span><span class="sw" style="background:#F0A83C33"></span>Transitional</span>
-  <span><span class="sw" style="background:#E5484D33"></span>Stress</span>
-  <span>Dashed line: 0.50 systemic-stress threshold (Kritzman et al., 2011)</span>
-</div>
+<div class="dash-legend"><span><span class="sw" style="background:#2E7D4F33"></span>Calm</span><span><span class="sw" style="background:#C98A2B33"></span>Transitional</span><span><span class="sw" style="background:#B23A3A33"></span>Stress</span><span>Dashed line: 0.50 threshold (Kritzman et al., 2011)</span></div>
 
 ```js
-const accelSeries = dash.accelerator
-  .filter((d) => d.value !== null)
-  .map((d) => ({date: parseDate(d.date), value: d.value}));
+const accelSeries = dash.accelerator.filter((d) => d.value !== null).map((d) => ({date: parseDate(d.date), value: d.value}));
 ```
 
 <div class="dash-chart">
-<h4>Accelerator · standardised 15-day change in Absorption Ratio (z-score)</h4>
+<h4>Accelerator · standardised 15-day change in the Absorption Ratio</h4>
 
 ```js
 Plot.plot({
-  width: 900,
-  height: 180,
-  marginLeft: 40,
-  style: {background: "transparent", color: "#7B8783", fontFamily: "IBM Plex Mono, monospace", fontSize: "10px"},
+  width: 740, height: 170, marginLeft: 40, style: axisStyle,
   x: {type: "utc", label: null},
   y: {label: "z-score", grid: true},
   marks: [
-    Plot.ruleY([0], {stroke: "#1C2323"}),
-    Plot.ruleY([2, -2], {stroke: "#39423F", strokeDasharray: "3,3"}),
-    Plot.areaY(accelSeries, {x: "date", y: "value", fill: (d) => (d.value >= 0 ? "#E5484D" : "#3FE38C"), fillOpacity: 0.35}),
-    Plot.lineY(accelSeries, {x: "date", y: "value", stroke: "#C7D0CC", strokeWidth: 1}),
-  ],
+    Plot.ruleY([0], {stroke: "#C9C4B9"}),
+    Plot.ruleY([2, -2], {stroke: "#1A1A1A", strokeDasharray: "4,3"}),
+    Plot.lineY(accelSeries, {x: "date", y: "value", stroke: "#1F4E79", strokeWidth: 1.1})
+  ]
 })
 ```
 
 </div>
-<div class="dash-legend">
-  <span>Above +2σ: risk building fast</span>
-  <span>Below −2σ: risk easing fast</span>
-</div>
+<div class="dash-legend"><span>Above +2σ: risk building fast</span><span>Below −2σ: risk easing fast</span></div>
 
 ```js
 const assets = dash.correlation_matrix.assets;
+const label = (a) => a.replace(/_/g, " ");
 const corrCells = [];
-dash.correlation_matrix.values.forEach((row, i) => {
-  row.forEach((v, j) => corrCells.push({x: assets[j], y: assets[i], value: v}));
-});
+dash.correlation_matrix.values.forEach((row, i) => row.forEach((v, j) => corrCells.push({x: label(assets[j]), y: label(assets[i]), value: v})));
 ```
 
 <div class="dash-chart">
-<h4>Current correlation matrix · trailing 60 trading days</h4>
+<h4>Correlation matrix · trailing 60 trading days</h4>
 
 ```js
 Plot.plot({
-  width: 900,
-  height: 460,
-  marginLeft: 110,
-  marginBottom: 100,
-  style: {background: "transparent", color: "#7B8783", fontFamily: "IBM Plex Mono, monospace", fontSize: "10px"},
-  x: {domain: assets, label: null, tickRotate: -40},
-  y: {domain: assets, label: null},
-  color: {type: "linear", scheme: "PiYG", domain: [-1, 1], legend: true, label: "correlation"},
+  width: 740, height: 440, marginLeft: 110, marginBottom: 90, style: axisStyle,
+  x: {domain: assets.map(label), label: null, tickRotate: -35},
+  y: {domain: assets.map(label), label: null},
+  color: {type: "linear", scheme: "RdBu", domain: [-1, 1], legend: true, label: "correlation"},
   marks: [
-    Plot.cell(corrCells, {x: "x", y: "y", fill: "value"}),
-    Plot.text(corrCells, {x: "x", y: "y", text: (d) => d.value.toFixed(2), fill: "#070909", fontSize: 9}),
-  ],
+    Plot.cell(corrCells, {x: "x", y: "y", fill: "value", inset: 0.5}),
+    Plot.text(corrCells, {x: "x", y: "y", text: (d) => d.value.toFixed(2), fill: (d) => Math.abs(d.value) > 0.6 ? "white" : "#1A1A1A", fontSize: 10})
+  ]
 })
 ```
 
 </div>
 
-<div class="explainer">
+<p class="muted" style="font-size:15px">Data: Yahoo Finance, 9 assets. PCA from scikit-learn; 3-state Gaussian HMM from hmmlearn, refitted on each update. Generated ${new Date(dash.generated_at).toUTCString()}.</p>
 
-### How to read this
+## Limitations
 
-<h4>Absorption Ratio</h4>
-<p>The share of total variance across the nine-asset universe explained by the first
-principal component, on a rolling 60-day window. High values mean the market is moving as
-one correlated block — diversification is thin even if it doesn't show up in any single
-correlation number. The 0.50 line follows Kritzman et al. (2011).</p>
+- 261 trading days is short for systemic-risk work, so findings specific to this window are exploratory.
+- Granger tests assume linear dependence; only Bonferroni-robust links are treated as solid.
+- Next steps: walk-forward HMM evaluation, non-linear causality (transfer entropy) and copula-based tail dependence.
 
-<h4>Accelerator</h4>
-<p>The standardised rate of change of the Absorption Ratio — is systemic risk building, and
-how fast? A reading above +2σ means risk is rising quickly even if the AR level itself
-isn't at an extreme yet; this is what a level-only reading of the Absorption Ratio misses.</p>
+## Reproduce it
 
-<h4>Regime</h4>
-<p>A 3-state Gaussian Hidden Markov Model classifies each day as Calm, Transitional, or
-Stress based on the joint behaviour of the dominant market factor, the Absorption Ratio, and
-the accelerator. States are relabelled each run by mean Absorption Ratio, so the labels stay
-meaningful even though the model is refit daily (see the note below).</p>
+```bash
+git clone https://github.com/youness-yach/geometry-of-risk
+pip install -r requirements.txt
+jupyter nbconvert --to notebook --execute notebooks/geometry_of_risk.ipynb
+```
 
-<h4>This dashboard vs. the manuscript</h4>
-<p>The peer-reviewed analysis in the repository uses a single HMM fit and validates it
-out-of-sample against 14 years of history — that's the methodology backing the paper's
-results. This live page refits the HMM fresh on every update instead, on whatever data is
-available that day. That's a deliberate choice: this page exists to show the framework
-running as a tool, not to reproduce the manuscript. Numbers here may not exactly match the
-paper's reported figures, and will vary run to run near regime boundaries.</p>
+The repo runs on the frozen study window, so every run gives the same result. A few secondary figures differ slightly from the paper, which used a live download in May 2026; the repo documents each difference.
+
+<div class="pager"><a href="/#work">← All projects</a><a href="/projects/urban-heat-islands">Next: Urban heat islands →</a></div>
 
 </div>
-
-<div class="stack">Data: Yahoo Finance, 9 global assets · <span>Refit daily</span> · scikit-learn PCA · hmmlearn Gaussian HMM</div>
-<a class="btn" href="https://github.com/youness-yach/geometry-of-risk" target="_blank" rel="noopener">Full methodology &amp; manuscript status →</a>
-
-<p class="stack" style="margin-top:8px">Updates daily at 22:00 UTC, after US market close. Generated: ${new Date(dash.generated_at).toUTCString()}</p>
+</div>

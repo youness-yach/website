@@ -1,0 +1,12 @@
+# Old URLs from the previous site layout
+/method                                        /about                        301
+/record                                        /about                        301
+/contact                                       /about                        301
+/contact/                                      /about                        301
+/data-analytics/semester-at-sea                /projects/semester-at-sea     301
+/data-analytics/*                              /about                        301
+/writing/*                                     /research                     301
+/quantitative-finance/leveraged-etf-strategy   /projects/summr-strategy      301
+/quantitative-finance/leveraged-etf-strategy/* /projects/summr-strategy      301
+/quantitative-finance/discretionary-fx         /about                        301
+/projects/_template                            /                             301

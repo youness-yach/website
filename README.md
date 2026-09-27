@@ -1,97 +1,56 @@
-# Personal website — youness-yachruti.pages.dev
+# youness-yachruti.pages.dev
 
-Built with [Observable Framework](https://observablehq.com/framework/).
-"Trading desk" theme — dark, monospace, terminal-inspired — with a real
-sidebar and one page per project (no client-side tab-switching, every
-project has its own shareable URL).
+Personal portfolio of Youness Yachruti, built with
+[Observable Framework](https://observablehq.com/framework/) and deployed to
+Cloudflare Pages. Written for recruiters and industry professionals: the home
+page shows qualifications at a glance, and every project leads with the skills
+it applied and one verified result.
 
-Live: https://youness-yachruti.pages.dev
+## Pages
 
-## Structure
+| URL | Source | What it shows |
+|---|---|---|
+| `/` | `src/index.md` | Tearsheet, 6 project cards, skills-by-project matrix, research |
+| `/quantitative-finance/geometry-of-risk/` | `src/quantitative-finance/geometry-of-risk/index.md` | Research project, SSRN paper, live risk dashboard |
+| `/projects/urban-heat-islands` | `src/projects/urban-heat-islands.md` | Geospatial machine learning |
+| `/projects/labor-analytics` | `src/projects/labor-analytics.md` | Power BI suite and measure audit |
+| `/projects/cpi-forecasting` | `src/projects/cpi-forecasting.md` | Time-series ML and leakage |
+| `/projects/semester-at-sea` | `src/projects/semester-at-sea.md` | SQL data model and revenue analysis |
+| `/projects/summr-strategy` | `src/projects/summr-strategy.md` | Summary of professional work (hypothetical results, no proprietary detail) |
+| `/research` | `src/research.md` | Paper and published writing |
+| `/about` | `src/about.md` | Experience, education, leadership |
 
-```
-src/
-├── index.md                        Home — Profile / How I Work / Background
-├── style.css                       Full custom theme (no base theme import)
-├── quantitative-finance/
-│   ├── geometry-of-risk.md
-│   ├── leveraged-etf-strategy.md
-│   └── discretionary-fx.md
-├── data-analytics/
-│   ├── semester-at-sea.md
-│   ├── llm-automation.md
-│   └── fx-ops-compliance.md
-├── writing/
-│   ├── visa-valuation.md
-│   └── notes-wip.md
-├── contact/
-│   └── index.md
-└── projects/
-    └── _template.md                Copy this to start a new project page
-observablehq.config.js              Sidebar nav (4 groups), theme, header/footer
-```
+Every number on the site comes from the linked repository, the SSRN paper or a
+published note.
 
-## Design system (all defined in `src/style.css`)
+## Design
 
-Reusable components you can drop into any page's markdown as raw HTML:
+`src/style.css` is the whole design system (`theme: []` disables Observable's
+default styles): a light "research tearsheet" look with Source Serif 4
+headings, Source Sans 3 body text, IBM Plex Mono figures and a single navy
+accent. Fonts are self-hosted in `static/fonts/` and declared in the `head` of
+`observablehq.config.js`.
 
-| Class | What it's for |
-|---|---|
-| `<span class="stamp">Section · Category</span>` | Small amber eyebrow label above the H1 |
-| `<span class="deck">Subtitle</span>` | Uppercase mono subhead under the H1 |
-| `<div class="facts">...</div>` | Stat strip — see `leveraged-etf-strategy.md` |
-| `<div class="note"><b>Label</b>Text</div>` | Amber callout box — use for backtest/live disclaimers |
-| `<div class="stack">Tech · <span>Key</span></div>` | Tech-stack line, wrap standout items in `<span>` |
-| `<a class="btn solid" href="...">` | Filled button (primary CTA) |
-| `<a class="btn" href="...">` | Outline button (secondary) |
-| `<div class="ledger">...</div>` | Timeline rows — see `index.md` "Background" |
-
-## How to run locally
+## Build and preview
 
 ```bash
 npm install
-npm run dev
+# the live dashboard's data file is generated, not committed:
+python ../geometry-of-risk/scripts/compute_risk_dashboard.py \
+  src/quantitative-finance/geometry-of-risk/data/risk-dashboard.json
+npm run build          # observable build + scripts/postbuild.mjs
+npx wrangler pages deploy dist --project-name=youness-yachruti --branch=redesign   # private preview
 ```
 
-Opens a local preview server (prints the URL to the terminal) with live
-reload as you edit files in `src/`.
+`scripts/postbuild.mjs` copies `static/` (fonts, `_redirects`, the link-preview
+image) into `dist/` and re-enables pinch-zoom. `static/_redirects` sends the
+previous site's URLs to their new pages.
 
-## How to add a project page
+## Daily rebuild
 
-1. Copy `src/projects/_template.md` into the right section folder and rename
-   it to the project's slug, e.g. `src/quantitative-finance/new-project.md`.
-   Fill in the sections — every metric labeled backtest/live, nothing
-   invented — then delete the HTML comment block at the top.
-2. In `observablehq.config.js`, add an entry to that section's `pages`
-   array:
-   ```js
-   {name: "New Project", path: "/quantitative-finance/new-project"}
-   ```
-3. Build and redeploy (see below).
-
-## How to redeploy
-
-Manual deploy to Cloudflare Pages (no CI yet — deliberate, kept simple):
-
-```bash
-npm run build
-CLOUDFLARE_API_TOKEN=your_token npx wrangler pages deploy dist --project-name=youness-yachruti
-```
-
-Get a token at https://dash.cloudflare.com/profile/api-tokens (Cloudflare
-Pages — Edit permission is enough). Don't commit it — pass it inline as
-shown above, or export it in your shell for the session only.
-
-## Notes
-
-- No résumé download, no phone number, no photos anywhere on the site —
-  contact is email/LinkedIn/GitHub only (Contact page).
-- Every number is sourced from a verified project, résumé, or explicit
-  confirmation — see the linked repos for methodology. Nothing invented.
-  The leveraged-ETF strategy page explicitly labels its 0.3 Sharpe as
-  backtest, not live.
-- Custom domain: not yet configured — currently served from the free
-  `*.pages.dev` subdomain.
+`.github/workflows/daily-rebuild.yml` recomputes the Geometry of Risk dashboard
+from the `geometry-of-risk` repo, rebuilds and deploys. It needs the
+`CLOUDFLARE_API_TOKEN` secret.
 
 ---
 Youness Yachruti · [LinkedIn](https://www.linkedin.com/in/youness-yachruti/)

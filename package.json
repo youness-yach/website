@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "clean": "rimraf src/.observablehq/cache",
-    "build": "observable build",
+    "build": "observable build && node scripts/postbuild.mjs",
     "dev": "observable preview",
-    "deploy": "observable deploy",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=youness-yachruti",
     "observable": "observable"
   },
   "dependencies": {
