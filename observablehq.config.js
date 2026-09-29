@@ -31,7 +31,7 @@ export default {
   </nav>
 </div>`,
 
-  footer: `<a href="/about">About</a> · <a href="/research">Research</a> · <a href="mailto:yyachruti@gmail.com">yyachruti@gmail.com</a> · <a href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a> · <a href="https://github.com/youness-yach">GitHub</a><br>© ${new Date().getFullYear()} Youness Yachruti`,
+  footer: `<a href="/about">About</a> · <a href="/research">Research</a> · <a href="mailto:yyachruti@gmail.com">yyachruti@gmail.com</a> · <a href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a> · <a href="https://github.com/youness-yach">GitHub</a> · <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=13310688">SSRN</a><br>© ${new Date().getFullYear()} Youness Yachruti`,
 
   head: `<meta name="description" content="Youness Yachruti: quantitative researcher and data scientist. Systematic trading and risk models in Python, published research, and reproducible data projects.">
 <meta property="og:site_name" content="Youness Yachruti">

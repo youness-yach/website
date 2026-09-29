@@ -11,6 +11,7 @@ title: Youness Yachruti · Quantitative research and data science
 <div class="btns">
 <a class="btn primary" href="https://www.linkedin.com/in/youness-yachruti/">LinkedIn</a>
 <a class="btn" href="https://github.com/youness-yach">GitHub</a>
+<a class="btn" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=13310688">SSRN</a>
 </div>
 </div>
 <img class="hero-photo" src="./assets/photo.jpg" alt="Portrait of Youness Yachruti">
